@@ -5,7 +5,7 @@ source <(curl -s https://raw.githubusercontent.com/jeddytier4/ProxmoxVE/refs/hea
 # License: MIT | https://github.com/community-scripts/ProxmoxVE/raw/main/LICENSE
 
 # App Default Values
-APP="FoundryVTT"
+APP="Alpine-FoundryVTT"
 var_tags="foundry;vtt;alpine"  
 var_cpu="1"
 var_ram="2048"
