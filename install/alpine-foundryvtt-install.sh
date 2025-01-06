@@ -28,6 +28,11 @@ msg_info "Installing FoundryVTT"
 FOUNDRY_APP_DIR="/home/foundry"
 FOUNDRY_DATA_DIR="/data/foundry"
 mkdir -p "$FOUNDRY_APP_DIR" "$FOUNDRY_DATA_DIR"
+if VTT_TEMP_URL_SET=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set Foundry Download Url" 8 58 --title "FoundryVTT Temp Download Url" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
+  export VTT_TEMP_URL=$VTT_TEMP_URL_SET
+else
+  exit-script
+fi
 msg_info "Downloading FoundryVTT"
 wget -q -O "$FOUNDRY_APP_DIR/foundryvtt.zip" "$VTT_TEMP_URL"
 msg_info "Expanding FoundryVTT"
