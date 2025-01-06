@@ -43,30 +43,30 @@ pm2 start --silent "$FOUNDRY_APP_DIR/resources/app/main.js" --name foundry --use
 # Allow PM2 to start at boot
 pm2 startup --silent
 pm2 save --silent
-
-# cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
-# {
-#   "port": 30000,
-#   "upnp": true,
-#   "fullscreen": false,
-#   "hostname": "${APP}",
-#   "localHostname": null,
-#   "routePrefix": null,
-#   "sslCert": null,
-#   "sslKey": null,
-#   "awsConfig": null,
-#   "dataPath": "${FOUNDRY_DATA_DIR}",
-#   "passwordSalt": null,
-#   "proxySSL": true,
-#   "proxyPort": 443,
-#   "serviceConfig": null,
-#   "updateChannel": "stable",
-#   "language": "en.core",
-#   "upnpLeaseDuration": null,
-#   "compressStatic": true,
-#   "world": null
-# }
-# EOF
+mkdir -p "$FOUNDRY_DATA_DIR/Config/"
+cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
+{
+  "port": 30000,
+  "upnp": true,
+  "fullscreen": false,
+  "hostname": "${APP}",
+  "localHostname": null,
+  "routePrefix": null,
+  "sslCert": null,
+  "sslKey": null,
+  "awsConfig": null,
+  "dataPath": "${FOUNDRY_DATA_DIR}",
+  "passwordSalt": null,
+  "proxySSL": true,
+  "proxyPort": 443,
+  "serviceConfig": null,
+  "updateChannel": "stable",
+  "language": "en.core",
+  "upnpLeaseDuration": null,
+  "compressStatic": true,
+  "world": null
+}
+EOF
 
 # Restart Foundry to take proxying into account
 # pm2 restart foundry --silent
