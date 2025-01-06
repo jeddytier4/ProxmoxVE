@@ -27,7 +27,7 @@ msg_info "Installing FoundryVTT"
 FOUNDRY_APP_DIR="/home/foundry"
 FOUNDRY_DATA_DIR="/data/foundry"
 mkdir -p "$FOUNDRY_APP_DIR" "$FOUNDRY_DATA_DIR"
-wget -O "$FOUNDRY_APP_DIR/foundryvtt.zip" "$VTTTEMPURL"
+wget -O "$FOUNDRY_APP_DIR/foundryvtt.zip" "$VTT_TEMP_URL"
 unzip "$FOUNDRY_APP_DIR/foundryvtt.zip" -d "$FOUNDRY_APP_DIR"
 chown -R foundry:foundry "$FOUNDRY_APP_DIR" "$FOUNDRY_DATA_DIR"
 npm install pm2@latest -g
