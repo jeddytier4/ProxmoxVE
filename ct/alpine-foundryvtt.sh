@@ -23,8 +23,8 @@ variables
 color
 catch_errors
 
-if VTT_TEMP_URL=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set Foundry Download Url" 8 58 --title "FoundryVTT Temp Download Url" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
-
+if VTT_TEMP_URL_SET=$(whiptail --backtitle "Proxmox VE Helper Scripts" --inputbox "Set Foundry Download Url" 8 58 --title "FoundryVTT Temp Download Url" --cancel-button Exit-Script 3>&1 1>&2 2>&3); then
+  export VTT_TEMP_URL = VTT_TEMP_URL_SET
 else
   exit-script
 fi
