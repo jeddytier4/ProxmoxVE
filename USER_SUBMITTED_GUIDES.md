@@ -1,6 +1,6 @@
 <div align="center">
   <a href="#">
-    <img src="https://raw.githubusercontent.com/community-scripts/ProxmoxVE/main/misc/images/logo.png" height="100px" />
+    <img src="https://raw.githubusercontent.com/jeddytier4/ProxmoxVE/refs/heads/FoundryVTT/misc/images/logo.png" height="100px" />
  </a>
 </div>
 <h2 align="center">User Submitted Guides </h2>
