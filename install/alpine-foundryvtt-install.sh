@@ -21,6 +21,7 @@ $STD apk add nano
 $STD apk add mc
 $STD apk add unzip
 $STD apk add nodejs
+$STD apk add npm
 msg_ok "Installed Dependencies"
 $STD adduser -S foundry
 msg_info "Installing FoundryVTT"
@@ -28,7 +29,7 @@ FOUNDRY_APP_DIR="/home/foundry"
 FOUNDRY_DATA_DIR="/data/foundry"
 mkdir -p "$FOUNDRY_APP_DIR" "$FOUNDRY_DATA_DIR"
 msg_info "Downloading FoundryVTT"
-wget -O "$FOUNDRY_APP_DIR/foundryvtt.zip" "$VTT_TEMP_URL"
+wget -q -O "$FOUNDRY_APP_DIR/foundryvtt.zip" "$VTT_TEMP_URL"
 msg_info "Expanding FoundryVTT"
 unzip -qq -o "$FOUNDRY_APP_DIR/foundryvtt.zip" -d "$FOUNDRY_APP_DIR"
 chown -R foundry: "$FOUNDRY_APP_DIR" "$FOUNDRY_DATA_DIR"
