@@ -43,9 +43,11 @@ pm2 start --silent "$FOUNDRY_APP_DIR/resources/app/main.js" --name foundry --use
 # Allow PM2 to start at boot
 pm2 startup --silent
 pm2 save --silent
+msg_ok "Starting FoundryVTT"
 mkdir -p "$FOUNDRY_DATA_DIR/Config/"
 motd_ssh
 customize
+msg_info "Configuring FoundryVTT"
 cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
 {
   "port": 30000,
@@ -69,7 +71,7 @@ cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
   "world": null
 }
 EOF
-
+msg_ok "Configuring FoundryVTT"
 # Restart Foundry to take proxying into account
 # pm2 restart foundry --silent
 
