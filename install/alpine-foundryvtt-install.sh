@@ -45,15 +45,14 @@ pm2 startup --silent
 pm2 save --silent
 msg_ok "Starting FoundryVTT"
 mkdir -p "$FOUNDRY_DATA_DIR/Config/"
-motd_ssh
-customize
 msg_info "Configuring FoundryVTT"
+HOSTNAME=$(hostname -f)
 cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
 {
   "port": 30000,
   "upnp": true,
   "fullscreen": false,
-  "hostname": "${APP}",
+  "hostname": "${HOSTNAME}",
   "localHostname": null,
   "routePrefix": null,
   "sslCert": null,
@@ -71,8 +70,10 @@ cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
   "world": null
 }
 EOF
-msg_ok "Configuring FoundryVTT"
 # Restart Foundry to take proxying into account
-# pm2 restart foundry --silent
+pm2 restart foundry --silent
+msg_ok "Configuring FoundryVTT"
 
 msg_ok "FoundryVTT Installed"
+motd_ssh
+customize
