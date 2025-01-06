@@ -43,24 +43,24 @@ msg_ok "Expanding FoundryVTT"
 npm install pm2@latest -g --no-fund --silent
 
 msg_info "Starting FoundryVTT"
-pm2 start "$FOUNDRY_APP_DIR/resources/app/main.js" --name foundry --user foundry -- --dataPath="$FOUNDRY_DATA_DIR" --silent
+pm2 start --silent "$FOUNDRY_APP_DIR/resources/app/main.js" --name foundry --user foundry -- --dataPath="$FOUNDRY_DATA_DIR"
 
 # Allow PM2 to start at boot
 pm2 startup --silent
 pm2 save --silent
 
-#   cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
+# cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
 # {
 #   "port": 30000,
 #   "upnp": true,
 #   "fullscreen": false,
-#   "hostname": "${FOUNDRY_HOSTNAME}",
+#   "hostname": "${APP}",
 #   "localHostname": null,
 #   "routePrefix": null,
 #   "sslCert": null,
 #   "sslKey": null,
 #   "awsConfig": null,
-#   "dataPath": "${APP}",
+#   "dataPath": "${FOUNDRY_DATA_DIR}",
 #   "passwordSalt": null,
 #   "proxySSL": true,
 #   "proxyPort": 443,
@@ -73,8 +73,8 @@ pm2 save --silent
 # }
 # EOF
 
-  # Restart Foundry to take proxying into account
-  pm2 restart foundry --silent
+# Restart Foundry to take proxying into account
+# pm2 restart foundry --silent
 
 msg_ok "FoundryVTT Installed"
 
