@@ -6,7 +6,7 @@ source <(curl -s https://raw.githubusercontent.com/jeddytier4/ProxmoxVE/refs/hea
 
 # App Default Values
 APP="FoundryVTT"
-var_tags="foundry;vtt;alpine"
+var_tags="foundry;vtt;alpine"  
 var_cpu="1"
 var_ram="2048"
 var_disk="8"
