@@ -44,6 +44,8 @@ pm2 start --silent "$FOUNDRY_APP_DIR/resources/app/main.js" --name foundry --use
 pm2 startup --silent
 pm2 save --silent
 mkdir -p "$FOUNDRY_DATA_DIR/Config/"
+motd_ssh
+customize
 cat > "$FOUNDRY_DATA_DIR/Config/options.json" <<EOF
 {
   "port": 30000,
@@ -72,6 +74,3 @@ EOF
 # pm2 restart foundry --silent
 
 msg_ok "FoundryVTT Installed"
-
-motd_ssh
-customize
