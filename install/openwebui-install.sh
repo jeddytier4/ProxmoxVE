@@ -46,11 +46,7 @@ $STD pip3 install torch torchvision torchaudio --index-url https://download.pyto
 $STD pip3 install -r requirements.txt -U
 cd /opt/open-webui
 cp .env.example .env
-cat <<EOF >/opt/open-webui/.env
-ENV=prod
-ENABLE_OLLAMA_API=false
-OLLAMA_BASE_URL=http://0.0.0.0:11434
-EOF
+
 $STD npm install
 export NODE_OPTIONS="--max-old-space-size=3584"
 $STD npm run build
@@ -80,9 +76,18 @@ WantedBy=multi-user.target
 EOF
   systemctl enable -q --now ollama.service
   sed -i 's/ENABLE_OLLAMA_API=false/ENABLE_OLLAMA_API=true/g' /opt/open-webui/.env
+  $ollama_url = "http://0.0.0.0:11434"
   msg_ok "Installed Ollama"
+else
+  msg_info "Configuring OpenWebUi"
+  read -r -p "Enter your Ollama Url(include port): " ollama_url
 fi
-
+cat <<EOF >/opt/open-webui/.env
+ENV=prod
+ENABLE_OLLAMA_API=false
+OLLAMA_BASE_URL=$ollama_url
+EOF
+msg_ok "Configured OpenWebUi"
 msg_info "Creating Service"
 cat <<EOF >/etc/systemd/system/open-webui.service
 [Unit]
